@@ -1,24 +1,37 @@
-<doctype html>
-  <html>
-    <head>
-      <meta charset="utf-8">
-      <meta name "viewport" content= "whidth=device-whidth">
-      <title>imc</title>
-      <link href"index.css" rel="stylessheet" type="text/css"/>
-    </head>
-    <body>
-      <script src="index.js"></script>
-                   <h1>bienvenido a este sitio web</h1>
-                   <h2><p class="headertwo"imc</h2></p>
-                   
-<p class="headertwo">peso:
-        <input type="text" placeholder="en kg" id="peso"></p>
-      
-        <p class="headertwo">altura
-        <input type="text"placeholder="en mts" id="altura"></p>
-        
-        <button type="button" onClick ="getIMC()">calcular
-        </button>
-        <p>tu imc es : <a id="imc">0</a></p>
-        </body>
-        </html>
+<html>
+<head>
+	<title>Calculadora de Indice de Masa Corporal</title>
+</head>
+<body>
+<h1> Masa Corporal</h1>
+<p>Ingrese peso (kg): <input type="text" id="kg"></p>
+<p>Ingrese Altura (m): <input type="text" id="m"></p>
+<button id="calc">Calcular</button>
+<p>IMC: <span id="imc"></span></p>
+<p>Lectura: <span id="lectura"></span></p>
+<script type="text/javascript">
+	calc = document.getElementById("calc");
+	kg = document.getElementById("kg");
+	m = document.getElementById("m");
+	imc = document.getElementById("imc");
+	lectura = document.getElementById("lectura");
+
+	calc.onclick = function(){
+		if(kg.value!="" && m.value!=""){
+			imcx = (kg.value / (m.value* m.value));
+			imc.innerHTML = imcx
+			console.log(imcx);
+
+			if(imcx<18.5){ lectura.innerHTML = "Peso inferior al normal"; }
+			else if(imcx>=18.5 && imcx<=24.9){ lectura.innerHTML = "Peso normal"; }
+			else if(imcx>=25 && imcx<=29.9){ lectura.innerHTML = "Peso superior al normal"; }
+			else if(imcx>30){ lectura.innerHTML = "Obesidad"; }
+
+		}else{
+			alert("Debes ingresar peso y altura.")
+		}
+
+	};
+</script>
+</body>
+</html>
